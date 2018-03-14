@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"plugins":["cordova-plugin-whitelist","phonegap-nfc","phonegap-plugin-barcodescanner"]}
+=======
+{"plugins":["cordova-plugin-whitelist","phonegap-nfc"]}
+>>>>>>> 0b94d08822e1dc25cb8983a5fd75bbd10e302e4f

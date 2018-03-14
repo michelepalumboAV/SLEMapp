@@ -1,5 +1,6 @@
 <html>
 
+<<<<<<< HEAD
     <head>
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -173,6 +174,198 @@
                 </div>
             </div>
         </div>
+=======
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <title>SLEM</title>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+    <div data-role="page" id="home">
+        <div data-role="header" data-position="fixed" class="appBar">
+            <h1>Home</h1>
+        </div>
+        <div class="homeHeader">
+            <center>
+                <img src="img/slemApp.png" />
+                <h2>SLEMApp</h2>
+            </center>
+        </div>
+
+        <div class="ul-content" role="main">
+            <div class="homeLoginContent" id="homeLoginContent">
+                <center>
+                    <div onclick="app.onNfc();" id="loader">
+                        <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                    </div>
+                    <h3 >Please press to identify yourself...</h3>
+                </center>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <h1>© TeamThree Solutions</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="menufunction">
+
+        <div data-role="header" data-position="fixed" class="appBar">
+                <h1>SLEMApp Menu</h1>
+                <span class="helloMr"></span>
+            <a href="#home" data-transition="slide" data-direction="reverse" data-icon="home"  class="backButton">Logout</a>
+
+        </div>
+        <div class="ul-content" role="main" id="ciao">
+            <br>
+            <br>
+            <br>
+           <br>
+            <a href="#inbound" data-transition="slide">
+            <center>
+                <button id="button_load" style="width:80%;"> 
+                    <center>
+                        <img src="img/boxes.png" style="width:50%;">
+                    </center> Load - Inbound
+                </button>
+            </center>
+            </a>
+           <br>
+           <br>
+           <br>
+           <br>
+            <a href="#preparesend" data-transition="slide">
+            <center>
+                <button id="button_unload" style="width:80%;" >
+                    <center>
+                        <img src="img/purchase.png" style="width:50%">
+                    </center>Unload - Outbound
+                </button>
+            </center>
+            </a>
+
+        </div>
+    </div>
+
+    <div data-role="page" id="inbound">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton">Back</a>
+                
+                <h1>Inbound</h1>
+                <span class="helloMr"></span>
+                
+            </div>
+            <div role="main" class="ui-content" class="homeLoginContent">
+                <br>
+                <br>
+                <div class="c" class="homeLoginContent" id="divIdentifyBatch">
+                        <center>
+                            <div onclick="app.onNfc();" id="loader">
+                                <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                            </div>  
+                                <h3  >Please press to scan the Order...</h3>    
+                        </center>
+                </div>  
+                <div class="btn_confirm">
+                <button  class="ul-content a"  disabled>
+                    <center >
+                        <img src="img/nfc-icon.png" style="width:10%"/>
+                    </center>Scan the Batch
+                  </button>
+             </div>          
+            </div>
+    
+    </div>      
+    
+    <div data-role="page" id="inbound_order">
+        <div data-role="header" data-position="fixed" class="appBar">
+            <h1>Inbound</h1>
+            <span class="helloMr"></span>
+            <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+        </div>
+        <div class="ui-content">
+            <div>
+               <label for="Order n°" class="labels">Order n°</label>
+               <input type="text" name="Order_n" id="Order_n" style="padding: 12px; border-radius: .5em;"  readonly>
+            </div>
+            <div>
+                <label for="Batches" class="labels">Batches</label>
+            </div>
+            <div id="cc" style="width:100%">
+              
+             </div>
+             <div class="btn_confirm">
+                <button onclick="app.onNfc();" class="ul-content a" >
+                    <center >
+                        <img src="img/nfc-icon.png" style="width:10%"/>
+                    </center>Scan the Batch
+                  </button>
+             </div>
+
+        </div>
+
+
+    </div>
+
+    <div data-role="page" id="inbound_batch">
+        <div data-role="header" data-position="fixed" class="appBar">
+            <h1>Inbound</h1>
+            <span class="helloMr"></span>
+            <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+        </div>
+        <div class="ui-content">
+            <div>
+               <label for="Batch ID" class="labels"> Batch ID</label>
+               <input type="text" style="padding: 12px; border-radius: .5em;" name="Batch ID" id="Batch_ID"  readonly>
+            </div>
+            <br>
+            <br>
+            <div class="c" class="homeLoginContent" id="scanLocation">
+                <center>
+                    <div onclick="app.onNfc();" id="loader">
+                       
+                        <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                            
+                    </div> 
+                       
+                        <h3>  Please press to scan the Location...</h3>    
+                </center>
+            </div>
+            <div id="location"  hidden>
+                <label for="Location" class="labels">Location</label>
+                <input type="text" name="Location ID" id="Location_ID" style="padding: 12px; border-radius: .5em;" readonly>
+            </div>
+             <div id="btn_confirma" class="btn_confirm">
+                <button  id="confirm" onclick="app.confermaBatch()" class="ul-content a" disabled>
+                    <center >
+                        
+                    </center>Confirm - Load
+                  </button>
+             </div>
+
+        </div>
+
+    </div>
+
+
+    <div data-role="page" id="preparesend">
+
+        <div data-role="header" data-position="fixed" class="appBar">
+                <h1>OutBound menu</h1>
+                <span class="helloMr"></span>
+            <a href="#home" data-transition="slide" data-direction="reverse"  data-rel="back" data-icon="back"  class="backButton">Back</a>
+>>>>>>> 0b94d08822e1dc25cb8983a5fd75bbd10e302e4f
 
         <!--Pagina di Slemapp della funzione Outbound che contiene menu con funzioni Prepare e Send  batch-->
         <div data-role="page" id="preparesend">
@@ -210,6 +403,7 @@
                 </a>
             </div>
         </div>
+<<<<<<< HEAD
 
         <!--Pagina di Slemapp della funzione Prepare di Outbound che permette di leggere ordini tramite NFC-->
         <div data-role="page" id="outbound_prepare">
@@ -239,6 +433,67 @@
 
         <!--Pagina 2 di Slemapp della funzione Prepare di Outbound che permette di richiedere la visualizzazione delle batches presenti in un ordine-->
         <div data-role="page" id="prepare2">
+=======
+        <div class="ul-content" role="main" id="ciao">
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="#prepare2" data-transition="slide">
+            <center>
+                <button id="prepare" style="width:80%; " > 
+                    <center>
+                        <img src="img/openBox.png" style="width:50%;">
+                    </center> Prepare
+                </button>
+            </center>
+            </a>
+           <br>
+           <br>
+           <br>
+           <br>
+            <a href="#outbound_send" data-transition="slide">
+            <center>
+                <button id="send" style="width:80%;">
+                    <center>
+                        <img src="img/box.png" style="width:50%">
+                    </center>Send
+                </button>
+            </center>
+            </a>
+
+        </div>
+    </div>
+
+    
+
+    <div data-role="page" id="prepare2">
+        <div data-role="header" data-position="fixed" class="appBar">
+            <h1>Outbound Prepare</h1>
+            <span class="helloMr"></span>
+            <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+        </div>
+        <div class="ui-content">
+            <div>
+                <label for="Order_id" class="labels">Order ID</label>
+               <input type="text"  value="1463E3D5-5644-4AD6-99E7-37DDCABF6312"  name="order_id" id="order_ID" style="padding: 12px; border-radius: .5em;">
+            </div>
+            <br>
+            <br>
+            <div >
+                <center>        
+                    <button  onclick="app.getOrdineOutbound();" id="button_unload" style="width:80%;">
+                        <center>
+                            <img src="img/Open-box_ballonicon2.png" style="width:50%">
+                        </center>Load..
+                    </button>  
+                </center> 
+            </div>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="outbound_order">
             <div data-role="header" data-position="fixed" class="appBar">
                 <h1>Outbound Prepare</h1>
                 <span class="helloMr"></span>
@@ -246,6 +501,38 @@
             </div>
             <div class="ui-content">
                 <div>
+                   <label for="Order_Id_out°" class="labels">Order ID</label>
+                   <input type="text" name="Order_ID_out" id="Order_ID_out" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <div>
+                    <label for="Batches" class="labels">Batches</label>
+                </div>
+                <div id="ccOutbound" style="width:100%">
+                  
+                 </div>
+                 <div class="btn_confirm">
+                    <button  class="ul-content a" disabled>
+                        <center >
+                            
+                        </center>Add
+                      </button>
+                 </div>
+    
+            </div>
+    
+    
+        </div>
+
+    <div data-role="page" id="outbound_batch">
+>>>>>>> 0b94d08822e1dc25cb8983a5fd75bbd10e302e4f
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Prepare</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+<<<<<<< HEAD
                     <label for="Order_id" class="labels">Order ID</label>
                     <input type="text" name="order_id" id="order_ID" style="padding: 12px; border-radius: .5em;">
                 </div>
@@ -293,6 +580,10 @@
                 <div>
                     <label for="Batch ID" class="labels">Batch ID</label>
                     <input type="text" name="Batch_ID_out" id="Batch_ID_out" style="padding: 12px; border-radius: .5em;" readonly>
+=======
+                   <label for="Batch ID" class="labels">Batch ID</label>
+                   <input type="text" name="Batch_ID_out" id="Batch_ID_out" style="padding: 12px; border-radius: .5em;" readonly>
+>>>>>>> 0b94d08822e1dc25cb8983a5fd75bbd10e302e4f
                 </div>
                 <br>
                 <br>
@@ -300,6 +591,7 @@
                     <center>
                         <div onclick="app.barcodeScan()" id="loader">
                             <center>
+<<<<<<< HEAD
                                 <img src="img/sbarcode3.png" style="width:100%">
                             </center>
                         </div>
@@ -363,10 +655,17 @@
                             <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
                         </div>
                         <h3>Please press to scan the batch...</h3>
+=======
+                                <img  src="img/sbarcode3.png" style="width:100%"> 
+                            </center>
+                        </div>  
+                            <h3  >Please press to scan the product...</h3>    
+>>>>>>> 0b94d08822e1dc25cb8983a5fd75bbd10e302e4f
                     </center>
                 </div>
                 <br>
                 <br>
+<<<<<<< HEAD
                 <div id="box_send_2" hidden></div>
                 <div class="btn_confirm">
                     <button class="ul-content a" disabled>Confirm</button>
@@ -400,5 +699,302 @@
             $(document).ready(app.initialize);
         </script>
     </body>
+=======
+                 <div id="btn_confirma" class="btn_confirm">
+                    <button  onclick="app.confermaBatch()" class="ul-content a" disabled >
+                        <center >
+                            
+                        </center>Add
+                      </button>
+                 </div>
+            </div>
+        </div>
+
+        <div data-role="page" id="outbound_batch_dett">
+                <div data-role="header" data-position="fixed" class="appBar">
+                    <h1>Outbound Prepare</h1>
+                    <span class="helloMr"></span>
+                    <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                </div>
+                <div class="ui-content">
+                    <div>
+                       <label for="Batch ID" class="labels">Batch ID</label>
+                       <input type="text" name="Batch ID" id="Batch_ID_out_det" style="padding: 12px; border-radius: .5em;" readonly>
+                       <br>
+                       <label for="Serial" class="labels">Serial</label>
+                       <input type="text" name="Serial" id="Serial" style="padding: 12px; border-radius: .5em;" readonly>
+                       <br>
+                       <label for="Local ID" class="labels">Product ID</label>
+                       <input type="text" name="Product_ID_out_det" id="Product_ID_out_det" style="padding: 12px; border-radius: .5em;" readonly>
+                       <br>
+                       <label for="Local ID" class="labels">Location ID</label>
+                       <input type="text" name="Location_ID_out_det" id="Location_ID_out_det" style="padding: 12px; border-radius: .5em;" readonly>
+                    </div>
+                    <br>
+                    <br>
+                    
+                    <div id="box_out_det">
+                        
+                     </div>
+                     <div id="btn_confirma" class="btn_confirm">
+                        <button  id="added" onclick="app.addProductOutbound()" class="ul-content a" disabled>
+                            <center >
+                                
+                            </center>Add
+                          </button>
+                     </div>
+        
+                </div>
+        
+        
+            </div>
+
+            <div data-role="page" id="outbound_send">
+                <div data-role="header" data-position="fixed" class="appBar">
+                    <h1>Outbound Send</h1>
+                    <span class="helloMr"></span>
+                    <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                </div>
+                <div class="ui-content">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="c" class="homeLoginContent" id="scanProduct">
+                        <center>
+                            <div onclick="app.onNfc();" id="loader">
+                                <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                            </div>  
+                                <h3  >Please press to scan the batch...</h3>    
+                        </center>
+                    </div>
+                     <div  class="btn_confirm">
+                        <button  class="ul-content a" disabled >
+                            <center >
+                                
+                            </center>Confirm
+                          </button>
+                     </div>
+                </div>
+            </div>
+
+            <div data-role="page" id="outbound_send_2">
+                <div data-role="header" data-position="fixed" class="appBar">
+                    <h1>Outbound Send</h1>
+                    <span class="helloMr"></span>
+                    <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                </div>
+                <div class="ui-content">
+                    <div>
+                        <label for="Batch ID" class="labels">Batch ID</label>
+                        <input type="text" name="Batch ID" id="Batch_ID_out_send" style="padding: 12px; border-radius: .5em;" readonly>
+                     </div>
+                     <br>
+                     <br>
+                     <br>
+                     <div id="box_send_2">
+
+                     </div>
+                     <div  class="btn_confirm">
+                        <button id="confirm_send_2"  onclick="app.confermaBatch_out_send_2();" class="ul-content a" disabled >
+                            <center >
+                                
+                            </center>Confirm
+                          </button>
+                     </div>
+                </div>
+            </div>
+    
+    
+
+    <!--mio-->
+   <!-- <div data-role="page" id="inbound_1">
+            <div data-role="header" data-position="fixed" class="appBar">
+                    <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                <h1>Inbound</h1>
+            </div>
+            <div class="ui-content">
+                 <div class="linea" >
+                    <br>
+                    <label for="Order ID">Order ID</label>
+                    <input type="text" name="Order_ID_1" id="Order_ID_1" disabled>
+                    <br>
+                 </div>
+                 <div class="linea" >
+                     <br>
+                    <label for="Product ID">Product ID</label> 
+                    <input type="text" name="Product_ID_1" id="Product_ID_1" disabled> 
+                    <label for="Name">Name</label>
+                    <input type="text" name="Name_1" id="Name_1" disabled>
+                    <label for="Model">Model</label>
+                    <input type="text" name="Model_1" id="Model_1" disabled>
+                    <label for="Description">Description</label>
+                    <input type="text" name="Description_1" id="Description_1" disabled>
+                    <br>
+                 </div>
+                 
+                <div class="linea" style="text-align:center" id="divexpeted">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                     <label for="Is it expeted product?">Is it expeted product?</label>
+                     <h1 id="12"></h1>
+                    
+                </div>
+                
+                <div class="btn_confirm" class="ul-content a">
+                        <a href="#inbound_2" data-transition="slide">
+                                <button  class="yes_no">Yes
+                                </button>
+                        </a>
+                        <a href="#inbound_1" data-transition="slide">
+                                <button  class="yes_no" style="width: 100%;">
+                                        <center>
+                                        
+                                        </center>No
+                                </button>
+                        </a>
+                     </div>
+            </div>    
+    </div>
+
+    <div data-role="page" id="inbound_2">
+            <div data-role="header">
+                    <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                <h1>Inbound</h1>
+            </div>
+            <div  class="ui-content">
+                 <div class="linea">
+                    <br>
+                    <label for="Order ID">Order ID</label>
+                    <input type="text" name="Order_ID_1" id="Order_ID_1" disabled>
+                    <label for="Requeset Quality">Requeset Quality</label>
+                    <input type="text" name="Requeset_Quality" id="Requeset_Quality" disabled>
+                    <br>
+                 </div>
+                 <div class="linea" class="fieldContainer">
+                     <br>
+                    <label for="Batch ID">Batch ID</label> 
+                    <input type="text" name="Batch ID" id="Batch_ID" disabled> 
+                    <label for="Actual Quality">Actual Quality</label>
+                    <input type="text" name="Name_1" id="Name_1" disabled>
+                    <label for="Model">Model</label>
+                    <input type="text" name="Model_1" id="Model_1" disabled>
+                    <label for="Description">Description</label>
+                    <input type="text" name="Description_1" id="Description_1" disabled>
+                    <br>
+                 </div>
+
+                 <div class="linea" >
+                        <br>
+                       <label for="From">From</label> 
+                       <input type="text" name="From" id="From" disabled> 
+                       <label for="To">To</label>
+                       <input type="text" name="To" id="To" disabled>
+                       <label for="Location ID">Location ID</label>
+                       <input type="text" name="Location ID" id="Locatoion_ID" disabled>
+                       
+                       <br>
+                    </div>
+                </div>
+
+                <div class="btn_confirm" class="ul-content a">
+                        
+                        <a href="#popupBasic" data-transition="pop" data-rel="popup">
+                                <button >
+                                    <center>
+                                        
+                                    </center>Confirm - Load
+                                </button>
+                        </a>
+                </div>
+                <div data-role="popup" id="popupBasic" style="text-align:center">
+                <p>Batch Loaded</p>
+                </div>
+      
+            </div>  
+            
+    </div>
+
+
+    <div data-role="page" id="Outbound">
+            <div data-role="header">
+                    <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                <h1>Outbound</h1>
+            </div>
+            <div class="ui-content">
+                 <!--<div class="linea">
+                    <br>
+                    <label for="Order ID">Order ID</label>
+                    <input type="text" name="Order_ID_1" id="Order_ID_1" disabled>
+                    <label for="Requeset Quality">Requeset Quality</label>
+                    <input type="text" name="Requeset_Quality" id="Requeset_Quality" disabled>
+                    <br>
+                 </div>
+                 <div class="fieldContainer">
+                        <form>
+                            <label for="Order ID">Order ID</label>
+                            <br>
+                            <input type="text" name="Order_ID_1" value="">
+                        </form>
+                 
+                        <br> 
+                        <br>   
+                 </div>   
+                <div id="Check_Info" class="ul-content a" >
+                        
+                        <a href="#Outbound_1" data-transition="slide" >
+                                <button >
+                                    <center>
+                                        
+                                    </center>Check Info
+                                </button>
+                        </a>
+                </div>
+            </div>   
+        </div>
+
+
+        <div data-role="page" id="Outbound_1">
+                <div data-role="header">
+                        <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+                    <h1>Outbound</h1>
+                </div>
+                <div  class="ui-content">
+                     <div class="linea">
+                        <br>
+                        <label for="Order ID">Order ID</label>
+                        <input type="text" name="Order_ID_1" id="Order_ID_1" disabled>
+                        <br>
+                     </div>
+        
+                     <div class="linea">
+                        <br>
+                       <label for="Batch ID">Batch ID</label> 
+                       <input type="text" name="Batch ID" id="Batch_ID" disabled> 
+                       <label for="Location_Id">Location ID</label>
+                       <input type="text" name="Location_Id" id="Location_Id" disabled>
+                       <br>
+                     </div>
+                     
+                    <div class="btn_confirm" class="ul-content a">
+                        <a href="#popupBasic" data-transition="pop" data-rel="popup">
+                                <button >
+                                    <center>
+                                        
+                                    </center>Confirm - Unload
+                                </button>
+                        </a>
+                    </div>
+                </div>  
+            </div>-->
+               
+
+    <script>
+        $(document).ready(app.initialize);
+    </script>
+</body>
+>>>>>>> 0b94d08822e1dc25cb8983a5fd75bbd10e302e4f
 
 </html>
