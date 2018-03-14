@@ -28,7 +28,7 @@ The nfc plugin used is the [PhoneGapp-NFC](https://github.com/chariotsolutions/p
 
 The nfc plugin used is the [PhoneGapp-Plugin-BarcodeScanner](https://github.com/phonegap/phonegap-plugin-barcodescanner)
 
-### Installing
+### Installation
 
 1. Once Apache Cordova is installed, just download the entire project.
 
