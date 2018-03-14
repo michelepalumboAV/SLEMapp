@@ -12,6 +12,9 @@
     },
     "phonegap-nfc": {
       "PACKAGE_NAME": "kms.teamthree.slem"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "kms.teamthree.slem"
     }
   },
   "dependent_plugins": {}

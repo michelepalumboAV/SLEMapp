@@ -1,75 +1,404 @@
 <html>
 
-<head>
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>SLEM</title>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </head>
 
-    <title>SLEM</title>
+    <body>
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
-    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-</head>
+        <!--Pagina iniziare  Slemapp per effettuare la login attraverso NFC--> 
+        <div data-role="page" id="home">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Home</h1>
+            </div>
+            <div class="homeHeader">
+                <center>
+                    <img src="img/slemApp.png" />
+                    <h2>SLEMApp</h2>
+                </center>
+            </div>
 
-<body>
-    <div data-role="page" id="home">
-        <div data-role="header" data-position="fixed">
-            <h1>SLEM</h1>
-        </div>
-
-        <div class="ul-content" role="main">
-            <a href="#wh_page" data-transition="slide">
-                <button>
+            <div class="ul-content" role="main">
+                <div class="homeLoginContent" id="homeLoginContent">
                     <center>
-                        <img src="img/warehouse.png" style="width:50%">
-                    </center> Warehouse Employee</button>
-            </a>
-            <a href="#ms_page" data-transition="slide">
-                <button>
+                        <div onclick="app.onNfc();" id="loader">
+                            <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                        </div>
+                        <h3>Please press to identify yourself...</h3>
+                    </center>
+                </div>
+                <div id="homebox"></div>
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+                <h1>© TeamThree Solutions</h1>
+            </div>
+        </div>
+
+        <!--Pagina del menu principale di Slemapp con funzione Imbound e Outbound-->
+        <div data-role="page" id="menufunction">
+
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>SLEMApp Menu</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="home" class="backButton">Logout</a>
+            </div>
+            <div class="ul-content" role="main" id="cia">
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="#inbound" data-transition="slide">
                     <center>
-                        <img src="img/ms.png" style="width:50%">
-                    </center> MS Employee</button>
-            </a>
+                        <button id="button_load" style="width:80%;"> 
+                            <center>
+                                <img src="img/boxes.png" style="width:50%;">
+                            </center> Load - Inbound
+                        </button>
+                    </center>
+                </a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="#preparesend" data-transition="slide">
+                    <center>
+                        <button id="button_unload" style="width:80%;">
+                            <center>
+                                <img src="img/purchase.png" style="width:50%">
+                            </center>Unload - Outbound
+                        </button>
+                    </center>
+                </a>
+            </div>
+       
+       <!--Pagina di Slemapp della funzione Imbound che permette di leggere ordini tramite NFC-->
+        <div data-role="page" id="inbound">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <a href="#menufunction" onclick="app.resetVisibility()" data-transition="slide" data-direction="reverse" data-icon="back" class="backButton">Back</a>
+                <h1>Inbound</h1>
+                <span class="helloMr"></span>
+            </div>
+            <div role="main" class="ui-content" class="homeLoginContent">
+                <br>
+                <br>
+                <div class="c" class="homeLoginContent" id="divIdentifyBatch">
+                    <center>
+                        <div onclick="app.onNfc();" id="loader">
+                            <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                        </div>
+                        <h3>Please press to scan the Order...</h3>
+                    </center>
+                </div>
+                <br>
+                <br>
+                <div id="boxorderInbound" hidden></div>
+            </div>
         </div>
-        <div data-role="footer" data-position="fixed">
-            <h1>© TeamThree Solutions</h1>
-        </div>
-    </div>
 
-    <div data-role="page" id="wh_page">
-        <div data-role="header" data-position="fixed">
-            <h1>Warehouse</h1>
-            <a href="#home" data-transition="slide" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-inline">Back</a>
+        <!--Pagina di Slemapp della funzione Imbound che permette di leggere una batch tramite NFC-->
+        <div data-role="page" id="inbound_order">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Inbound</h1>
+                <span class="helloMr"></span>
+                <a href="#inbound" onclick="app.resetVisibility()" data-transition="slide" data-direction="reverse" data-icon="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Order n°" class="labels">Order Id</label>
+                    <input type="text" name="Order_n" id="Order_n" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <div>
+                    <label for="Batches" class="labels">Batches</label>
+                </div>
+                <div id="cc" style="width:100%">
+                </div>
+                <br>
+                <br>
+                <div class="c">
+                    <center>
+                        <div onclick="app.onNfc();" id="loader">
+                            <center><img src="img/nfc-icon.png" style="width:100%" /></center>
+                        </div>
+                        <h3>Please press to scan the Batch...</h3>
+                    </center>
+                </div>
+                <br>
+                <br>
+                <div id="boxscanBatch" hidden></div>
+            </div>
         </div>
-        <div class="ul-content" role="main">
-            <h2>Hello User, here you che try the NFC read function</h2>
-            <div id="read_result"></div>
-            <div id="status_div"></div>
 
+        <!--Pagina di Slemapp della funzione Imbound che permette di leggere una location dove inserire la batch tramite NFC-->
+        <div data-role="page" id="inbound_batch">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Inbound</h1>
+                <span class="helloMr"></span>
+                <a href="#inbound_order" data-transition="slide" data-direction="reverse" data-icon="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Batch ID" class="labels"> Batch ID</label>
+                    <input type="text" style="padding: 12px; border-radius: .5em;" name="Batch ID" id="Batch_ID" readonly>
+                </div>
+                <br>
+                <br>
+                <div class="c" class="homeLoginContent" id="scanLocation">
+                    <center>
+                        <div onclick="app.onNfc();" id="loader">
+                            <center><img src="img/nfc-icon.png" style="width:100%" /></center>
+                        </div>
+                        <h3> Please press to scan the Location...</h3>
+                    </center>
+                </div>
+                <div id="location" hidden>
+                    <label for="Location" class="labels">Location</label>
+                    <input type="text" name="Location ID" id="Location_ID" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <br>
+                <div id="boxLocation">
+                </div>
+                <div id="btn_confirma" class="btn_confirm">
+                    <button id="confirm" onclick="app.confermaBatch()" class="ul-content a" disabled>Confirm - Load</button>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div data-role="page" id="ms_page">
-        <div data-role="header">
-            <a href="#home" data-transition="slide" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-inline">Back</a>
-            <h1>MS</h1>
+        <!--Pagina di Slemapp della funzione Outbound che contiene menu con funzioni Prepare e Send  batch-->
+        <div data-role="page" id="preparesend">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>OutBound menu</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" class="backButton">Back</a>
+            </div>
+            <div class="ul-content" role="main" id="csn">
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="#outbound_prepare" data-transition="slide">
+                    <center>
+                        <button id="prepare" style="width:80%; "> 
+                        <center>
+                            <img src="img/openBox.png" style="width:50%;">
+                        </center> Prepare
+                    </button>
+                    </center>
+                </a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="#outbound_send" data-transition="slide">
+                    <center>
+                        <button id="send" style="width:80%;">
+                            <center>
+                                <img src="img/box.png" style="width:50%">
+                            </center>Send
+                        </button>
+                    </center>
+                </a>
+            </div>
         </div>
-        <div role="main" class="ui-content">
-            <div id="write_div">OJust place a text here to try the NFC function</div>
-            <input type="text" id="write_text_input">
-            <div id="write_result"></div>
-            <div id="status_div"></div>
-        </div>
-    </div>
 
-    <script>
-        $(document).ready(app.initialize);
-    </script>
-</body>
+        <!--Pagina di Slemapp della funzione Prepare di Outbound che permette di leggere ordini tramite NFC-->
+        <div data-role="page" id="outbound_prepare">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Send</h1>
+                <span class="helloMr"></span>
+                <a href="#preparesend" onclick="app.resetVisibility()" data-transition="slide" data-direction="reverse" data-icon="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="c" class="homeLoginContent" id="scanProduct">
+                    <center>
+                        <div onclick="app.onNfc();" id="loader">
+                            <center><img src="img/nfc-icon.png" style="width:100%" /></center>
+                        </div>
+                        <h3>Please press to scan the order...</h3>
+                    </center>
+                </div>
+                <br>
+                <br>
+                <div id="boxorder" hidden></div>
+            </div>
+        </div>
+
+        <!--Pagina 2 di Slemapp della funzione Prepare di Outbound che permette di richiedere la visualizzazione delle batches presenti in un ordine-->
+        <div data-role="page" id="prepare2">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Prepare</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Order_id" class="labels">Order ID</label>
+                    <input type="text" name="order_id" id="order_ID" style="padding: 12px; border-radius: .5em;">
+                </div>
+                <br>
+                <br>
+                <div>
+                    <center>
+                        <button onclick="app.getOrdineOutbound();" id="button_unload" style="width:80%;">
+                            <center>
+                                <img src="img/Open-box_ballonicon2.png" style="width:50%">
+                            </center>Load..
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <!--Pagina 3 di Slemapp della funzione Prepare di Outbound che permette di visualizzare le batches presenti in un ordine-->
+        <div data-role="page" id="outbound_order">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Prepare</h1>
+                <span class="helloMr"></span>
+                <a href="#outbound_prepare" data-transition="slide" data-direction="reverse" data-icon="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Order_Id_out°" class="labels">Order ID</label>
+                    <input type="text" name="Order_ID_out" id="Order_ID_out" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <div>
+                    <label for="Batches" class="labels">Batches</label>
+                </div>
+                <div id="ccOutbound" style="width:100%"></div>
+            </div>
+        </div>
+
+        <!--Pagina 4 di Slemapp della funzione Prepare di Outbound che permette leggere un prodotto da inserire nella tramite BarCode-->
+        <div data-role="page" id="outbound_batch">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Prepare</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Batch ID" class="labels">Batch ID</label>
+                    <input type="text" name="Batch_ID_out" id="Batch_ID_out" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <br>
+                <br>
+                <div class="c" class="homeLoginContent" id="scanProduct">
+                    <center>
+                        <div onclick="app.barcodeScan()" id="loader">
+                            <center>
+                                <img src="img/sbarcode3.png" style="width:100%">
+                            </center>
+                        </div>
+                        <h3>Please press to scan the product...</h3>
+                    </center>
+                </div>
+                <br>
+                <br>
+                <div id="boxinf"></div>
+                <div id="btn_confirma" class="btn_confirm">
+                    <button id="end_batch" onclick="app.endBatch();" class="ul-content a" disabled>End batch</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Pagina 4 di Slemapp della funzione Prepare di Outbound che permette di visualizzare i dettegli dell prodotto da inserire nella batch comfermare-->
+        <div data-role="page" id="outbound_batch_dett">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Prepare</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Batch ID" class="labels">Batch ID</label>
+                    <input type="text" name="Batch ID" id="Batch_ID_out_det" style="padding: 12px; border-radius: .5em;" readonly>
+                    <br>
+                    <label for="Serial" class="labels">Serial</label>
+                    <input type="text" name="Serial" id="Serial" style="padding: 12px; border-radius: .5em;" readonly>
+                    <br>
+                    <label for="Local ID" class="labels">Product ID</label>
+                    <input type="text" name="Product_ID_out_det" id="Product_ID_out_det" style="padding: 12px; border-radius: .5em;" readonly>
+                    <br>
+                    <label for="Local ID" class="labels">Location ID</label>
+                    <input type="text" name="Location_ID_out_det" id="Location_ID_out_det" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <br>
+                <br>
+                <div id="box_out_det"></div>
+                <div id="btn_confirma" class="btn_confirm">
+                    <button id="added" onclick="app.addProductOutbound()" class="ul-content a" disabled>Add</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Pagina di Slemapp della funzione Send di Outbound che permette di leggere una batches tramite Nfc-->
+        <div data-role="page" id="outbound_send">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Send</h1>
+                <span class="helloMr"></span>
+                <a href="#home" onclick="app.resetVisibility()" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="c" class="homeLoginContent" id="scanProduct">
+                    <center>
+                        <div onclick="app.onNfc();" id="loader">
+                            <center><img src="img/nfc-icon.png" style="width:100%" /> </center>
+                        </div>
+                        <h3>Please press to scan the batch...</h3>
+                    </center>
+                </div>
+                <br>
+                <br>
+                <div id="box_send_2" hidden></div>
+                <div class="btn_confirm">
+                    <button class="ul-content a" disabled>Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Pagina 2 di Slemapp della funzione Send di Outbound che permette di confermare una batch da spedire-->
+        <div data-role="page" id="outbound_send_2">
+            <div data-role="header" data-position="fixed" class="appBar">
+                <h1>Outbound Send</h1>
+                <span class="helloMr"></span>
+                <a href="#home" data-transition="slide" data-direction="reverse" data-icon="back" data-rel="back" class="backButton"> Back</a>
+            </div>
+            <div class="ui-content">
+                <div>
+                    <label for="Batch ID" class="labels">Batch ID</label>
+                    <input type="text" name="Batch ID" id="Batch_ID_out_send" style="padding: 12px; border-radius: .5em;" readonly>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div id="box_send_3"></div>
+                <div class="btn_confirm">
+                    <button id="confirm_send_2" onclick="app.confermaBatch_out_send_2();" class="ul-content a" disabled>Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(app.initialize);
+        </script>
+    </body>
 
 </html>

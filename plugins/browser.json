@@ -1,18 +1,21 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "kms.teamthree.slem"
     },
-    "config_munge": {
-        "files": {}
+    "phonegap-nfc": {
+      "PACKAGE_NAME": "kms.teamthree.slem"
     },
-    "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "kms.teamthree.slem"
-        },
-        "phonegap-nfc": {
-            "PACKAGE_NAME": "kms.teamthree.slem"
-        }
-    },
-    "dependent_plugins": {}
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "kms.teamthree.slem"
+    }
+  },
+  "dependent_plugins": {}
 }
