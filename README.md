@@ -51,4 +51,5 @@ The nfc plugin used is the [PhoneGapp-Plugin-BarcodeScanner](https://github.com/
 
 [Iannotta Erennio](https://github.com/TimeParadox89) , 
 [Pappalardo Francesca](https://github.com/kikkatigre),
-[Angelo Conte](https://github.com/superAnge).
+[Angelo Conte](https://github.com/superAnge),
+[Michele Palumbo](https://github.com/michelepalumboAV).
